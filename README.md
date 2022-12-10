@@ -6,14 +6,15 @@ what you need:
 
 ## pre-partitioning:
 
-- the external m.2 drive has to be ext4 filesystem and has to be pre-formated to /dev/sda1 and /dev/sda2 prefered: dev1: 1gb, dev2: remaining space (1tb disk total)
+- the external m.2 drive has to be ext4 filesystem and has to be pre-formated to /dev/sda1 and /dev/sda2 prefered:
+  dev1: 1gb, dev2: remaining space (1tb disk total)
   
   you can do this with ``fdisk /dev/sda`` and ``mkfs.ext4 /dev/sda1`` ``mkfs.ext4 /dev/sda2`` you can also install ``blkid`` to see a list of uuids and drives. 
   
-- the previous firmware has to be mounted on /overlay -> /dev/sda1 and /opt -> /dev/sda2
-- the builder only compiles the necessary configuration and packages, this means you need to be 100% sure your uuids match in fstab before upgrading to a image and then   install the overall packages, you can find the location of the fstab file here /files/etc/config/fstab edit this for your own uuid before using the compiled image.
+- the previous firmware has to be mounted on ``/overlay -> /dev/sda1`` and ``/opt -> /dev/sda2``
+- the builder only compiles the necessary configuration and packages, this means you need to be 100% sure your uuids match in fstab before upgrading to a image and then install the overall packages, you can find the location of the fstab file here /files/etc/config/fstab edit this for your own uuid before using the compiled image.
 
-  these include:
+  the overall packages include:
   ``opkg update``
   ``opkg install luci-app-wireguard luci-app-nextdns luci-app-qos luci-app-sqm luci-app-pbr``
   
