@@ -2,8 +2,8 @@
 
 seed_name: '../seeds/v22.03.0-rc6.seed' # this is the seed we copy as .conf in the openwrt builders root.
 checkout_tag_version: 'v22.03.0-rc6' # this is our checkout version.
-wireless_driver: 'kmod-mt7950e cfg8012' # this is our wireless driver.
 feeds:
-   reset_feeds: true # this should be always true, simply because we want to update it.
+   always_reset_feeds: true # this should be always true, simply because we want to update it.
+   always_pull: true
    list:
        - 'luci-app-pbr' # <- for this use case pbr is required due to nft transition, in 22.02.xx we want to use luci-app-vpn-policy-routing 
