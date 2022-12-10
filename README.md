@@ -7,7 +7,7 @@ what you need:
 ## pre-partitioning:
 
 - the external m.2 drive has to be ext4 filesystem and has to be pre-formated to /dev/sda1 and /dev/sda2 prefered:
-  dev1: 1gb, dev2: remaining space (1tb disk total)
+  sda1: 1gb, sda2: remaining space (1tb disk total)
   
   you can do this with ``fdisk /dev/sda`` and ``mkfs.ext4 /dev/sda1`` ``mkfs.ext4 /dev/sda2`` you can also install ``blkid`` to see a list of uuids and drives. 
   
