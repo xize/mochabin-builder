@@ -18,7 +18,7 @@ generate_fstab_config() {
 
 	#this concept needs to be tested. #
 	
-	echo ${cat config_placeholders/fstab.conf} > ../files/etc/config/fstab 
+	echo ${cat config_placeholders/fstab.conf} > ../openwrt/files/etc/config/fstab 
 }
 
 generate_fstab_config
