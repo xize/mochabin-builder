@@ -20,3 +20,5 @@ generate_fstab_config() {
 	
 	echo ${cat config_placeholders/fstab.conf} > ../files/etc/config/fstab 
 }
+
+generate_fstab_config
