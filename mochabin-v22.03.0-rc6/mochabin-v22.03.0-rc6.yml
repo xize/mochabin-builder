@@ -2,6 +2,63 @@
 
 seed_name: '../seeds/v22.03.0-rc6.seed' # this is the seed we copy as .conf in the openwrt builders root.
 checkout_tag_version: 'v22.03.0-rc6' # this is our checkout version.
+fstab:
+   uuids:
+       # we can cut this with cut -d ' ' -f 2
+       - 'mmc: 84173db5-fa99-e35a-95c6-28613cc79ea9'
+       - 'sda: ff313567-e9f1-5a5d-9895-3ba130b4a864'
+       - 'sda1: e6fd0870-2634-4ca3-b93f-1a2a23bb5480'
+       - 'sda2: f27b34f5-d44a-46f5-aac8-5720fa24cd1c'
+       
+       # we could use a fstab placeholder and put our uuids dynamically in with
+       #
+       # echo EOF >>
+       # config global
+       # option anon_swap '0'
+       # option anon_mount '0'
+       # option auto_swap '1'
+       # option auto_mount '1'
+       # option delay_root '5'
+       # option check_fs '0'
+       #
+       # config mount
+       #        option target '/mnt/mmcblk0p1'
+       #        option uuid '${mmc}'
+       #        option enabled '0'
+       #
+       # config mount
+       #        option target '/'
+       #        option uuid '${sda}'
+       #        option enabled '0'
+       #
+       #config mount
+       #        option target '/mnt/sda1'
+       #        option uuid '${sda1}'
+       #        option enabled '0'
+       #
+       # config mount 'overlay'
+       #        option target '/overlay'
+       #        option uuid '${sda1}'
+       #        option enabled '1'
+       #
+       # config mount
+       #    option target '/mnt/sda2'
+       #    option uuid '${sda2}'
+       #    option enabled '0'
+       #
+       # config mount 'opt'
+       #        option target '/opt'
+       #        option uuid '${sda2}'
+       #        option enabled '1'
+       # 
+       # config swap
+       #         option uuid '${sda2}'
+       #         option enabled '0'
+       # <<EOF  > ../files/etc/config/fstab # this should be the files directory to add custom configuration for openwrt.
+       
+       # this way we always have a fresh fstab config which should 100% work, we only need to make this fail proof.
+       # optionally we force the user to add disk uuids through the build scripts parameters, then we remind the user
+       # to look into their uuids first.
 feeds:
    always_reset_feeds: true # this should be always true, simply because we want to update it.
    always_pull: true
