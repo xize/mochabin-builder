@@ -7,7 +7,7 @@ do
     esac
 done
 
-if [! -z configurationfile];
+if [! -z "$configurationfile"];
 then
     if [! -z directory_exists('openwrt') ]; then
 	do
