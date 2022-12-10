@@ -18,6 +18,13 @@ then
 	git fetch
 	git pull origin
 	
+	# TODO: add a way to read yaml.
+	# read: seed from profile
+	# add seed location to $seed
+	# add symlink to openwrt/.conf to load up seed.
+	
+	ln -s ".conf" "../seeds/".$seed
+	
 	# TODO: add a way to load a .config into the make command as a argument or... if it doesnt auto checkout repo version then we should use something like yaml to read easily and reset feeds ourselfs.
 	# we want as much of version control needed.
 elif
